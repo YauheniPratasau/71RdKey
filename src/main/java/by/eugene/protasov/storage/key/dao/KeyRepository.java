@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface KeyRepository extends JpaRepository<Key, Integer> {
 
-    @Query(value = "SELECT 1 FROM achievementRD.key where achievementRD.key.key=:keyForCheck",
+    @Query(value = "SELECT 1 FROM activation_key where user_activation_key=:keyForCheck",
             nativeQuery = true)
     String checkOrKeyExists(@Param("keyForCheck") String key);
 

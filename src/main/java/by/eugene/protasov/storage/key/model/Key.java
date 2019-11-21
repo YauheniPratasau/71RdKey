@@ -1,24 +1,23 @@
 package by.eugene.protasov.storage.key.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author Евгений Протасов | https://github.com/JProtosss | jprotossswork@gmail.com
  */
 
 @Entity
-@Table(name = "key")
+@Table(name = "activation_key")
 public class Key {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Column(name = "key")
     private String key;
@@ -44,5 +43,13 @@ public class Key {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
